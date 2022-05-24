@@ -1,0 +1,16 @@
+<h2>Mon Profil</h2>
+<h3>Mes annonces</h3>
+
+<div class="row">
+  <div class="card-book col-md-8">
+    <h2><%= @book.title %><%= @book.author %></h2>
+    <em><%= @book.address %><%= @book.rating %><%= @book.category %></em>
+    <div class="card">
+      <div class="book-img">
+        <%= image_tag @book.image_url, :class => 'class' %>
+      </div>
+      <div class="book-overview">
+        <p><%= @book.overview %></p>
+      </div>
+    </div>
+  </div>

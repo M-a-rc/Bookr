@@ -1,2 +1,26 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- Banner -->
+<div class="banner">
+  <div class="container">
+    <h1>La location de livres pour tous</h1>
+    <a href="">Commencer</a>
+  </div>
+</div>
+<!-- Fin banner -->
+
+<!-- Top Book -->
+<h2> Nos meilleurs livres :</h2>
+<ol>
+  <% @books.each do |book| %>
+    <li><%= book.title %></li>
+  <% end %>
+</ol>
+<!-- Fin top Book -->
+
+<!-- Top User -->
+<h2> Nos meilleurs utilisateurs :</h2>
+<ol>
+  <% @users.each do |user| %>
+    <li><%= user.username %></li>
+  <% end %>
+</ol>
+<!-- Fin top User -->
