@@ -1,39 +1,22 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show destroy]
-
-  def index
-    @orders = Order.all
-    # TODO : filtrer par user
-  end
-
-  def new
-    @order = Order.new
-  end
-
-  def show
-  end
+  before_action :set_order, only: %i[destroy]
 
   def create
-    @order = orders.new(order_params)
+    @order = Order.new
     @order.book = Book.find(params[:book_id])
     @order.user = current_user
     # TODO : vérifier que ça marche
     if @order.save
-      redirect_to order_path(@order)
+      redirect_to books_path
     else
       render :new
     end
   end
 
-  def destroy
-    @order.destroy
-    redirect_to orders_path
-  end
-
   private
 
   def order_params
-    params.require(:orders).permit(:status)
+    params.require(:order).permit(:status)
   end
 
   def set_order
