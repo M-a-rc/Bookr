@@ -1,0 +1,8 @@
+<%= simple_form_for [@book, @order] do |f| %>
+  <%= f.input :starting_date %>
+  <%= f.input :ending_date %>
+  <%= f.input :message %>
+  <%= f.submit "Validate Order", class: "btn btn-success" %>
+<% end %>
+
+<br>

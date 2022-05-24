@@ -1,8 +1,13 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[destroy]
 
-  def create
+  def new
     @order = Order.new
+    @book = Book.find(params[:book_id])
+  end
+
+  def create
+    @order = Order.new(order_params)
     @order.book = Book.find(params[:book_id])
     @order.user = current_user
     # TODO : vérifier que ça marche
@@ -16,7 +21,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:status)
+    params.require(:order).permit(:status, :message, :starting_date, :ending_date)
   end
 
   def set_order
