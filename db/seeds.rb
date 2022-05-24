@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+Book.destroy_all
+
 10.times do
-  Book.create(title: Faker::Name.first_name, author: Faker::Name.first_name, address: Faker::Name.first_name, category: Faker::Name.first_name, rating:3, overview:Faker::Name.first_name, review:Faker::Name.first_name, image_url:'https://www.google.com/search?q=chien&sxsrf=ALiCzsbYrGKkxO93RRjB-wKHGpXdEiVS8w:1653388424479&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiOz93t9_f3AhUw4YUKHY9eCloQ_AUoAXoECAIQAw&biw=823&bih=789&dpr=2#imgrc=m3Grp2xHgMbdVM', user_id: 1)
+  Book.create(title: Faker::Name.first_name, author: Faker::Name.first_name, address: Faker::Address.street_address, category: Faker::Lorem.word, rating: rand(5), overview:Faker::Lorem.sentence(word_count: 10), review:Faker::Lorem.sentence(word_count: 10), image_url:'https://static.fnac-static.com/multimedia/Images/FR/NR/62/ff/a9/11140962/1540-0/tsp20191031071127/Turquie-le-livre-de-cuisine.jpg', user_id: 1)
 end
