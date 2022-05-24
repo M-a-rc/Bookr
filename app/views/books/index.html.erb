@@ -5,13 +5,15 @@
 
 <h2>Index Book</h2>
 
+<%= link_to 'Ajouter un livre', new_book_path, class:"btn btn-success" %>
+
 <div class="row content">
   <% @books.each do |book| %>
     <div class="col-md-4 card-book">
       <img src="" alt="">
       <div class="card-book-infos">
-        <h2>Book Name</h2>
-        <p>Book Desc</p>
+        <h2> <%= book.title %> </h2>
+        <p> <%= book.overview %></p>
       </div>
     </div>
   <% end %>
