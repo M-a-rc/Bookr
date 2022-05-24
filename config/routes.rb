@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :books do
     resources :orders, only: %i[create]
   end
+  get 'profilepage', to: 'users#profile_page'
 end
