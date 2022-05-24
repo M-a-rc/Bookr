@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  require "json"
+  require "open-uri"
+
   before_action :set_book, only: %i[show edit update destroy]
   def index
     @books = Book.all
@@ -11,9 +14,9 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-
   def create
-    @book = current_user.books.new(book_params)
+    my_hash = book_params.merge(scrapper(book_params[:title]))
+    @book = current_user.books.new(my_hash)
     if @book.save
       redirect_to book_path(@book)
     else
@@ -40,10 +43,22 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :category)
+    params.require(:book).permit(:title, :author, :address)
   end
 
   def set_book
     @book = Book.find(params[:id])
+  end
+
+  def scrapper(title)
+    url = "https://www.googleapis.com/books/v1/volumes?q=#{title}"
+    parse_serialized = URI.open(url).read
+    parse = JSON.parse(parse_serialized)
+    {
+      overview: parse["items"][1]["volumeInfo"]["description"],
+      publishing_date: (parse["items"][1]["volumeInfo"]["publishedDate"].length == 7 ? "#{parse['items'][1]['volumeInfo']['publishedDate']}-02" : parse["items"][1]["volumeInfo"]["publishedDate"] ),
+      image_url: parse["items"][1]["volumeInfo"]["imageLinks"]["thumbnail"],
+      category: (parse["items"][1]["volumeInfo"]["categories"].nil? ? "N/a" : parse["items"][1]["volumeInfo"]["categories"].first)
+    }
   end
 end

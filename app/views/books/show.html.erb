@@ -1,7 +1,7 @@
 <div class="row">
   <div class="card-book col-md-8">
     <h2><%= @book.title %> - <%= @book.author %></h2>
-    <em><%= @book.address %><%= @book.rating %><%= @book.category %></em>
+    <em><%= @book.address %><%= @book.publishing_date %><%= @book.category %><%= @book.price %>€</em>
     <div class="card">
       <div class="book-img">
         <%= image_tag @book.image_url  %>
