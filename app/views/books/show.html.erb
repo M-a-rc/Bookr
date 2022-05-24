@@ -12,7 +12,9 @@
     </div>
   </div>
 
+<%= link_to "Back", books_path %>
+
   <div class="orders">
-    <a class="btn btn-lg" href="">Réserver</a>
+    <%= link_to "Reserver", book_orders_path(@book), method: :post %>
   </div>
 </div>
