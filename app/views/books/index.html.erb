@@ -10,6 +10,7 @@
 <div class="row content">
   <% @books.each do |book| %>
     <div class="col-md-4 card-book">
+  <%= link_to book_path(book), class:"text-decoration-none" do  %>
       <img src="" alt="">
       <div class="card-book-infos">
         <h2> <%= book.title %> </h2>
@@ -17,6 +18,7 @@
         <%= link_to "Edit", edit_book_path(book) %>
         <%= link_to "Delete", book_path(book), method: :delete %>
       </div>
+    <% end %>
     </div>
   <% end %>
 
