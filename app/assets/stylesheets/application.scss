@@ -78,12 +78,18 @@ ul {
 }
 
 img {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 400px;
   object-fit: cover;
 }
 
 .card-body{
   background-color: $bg-button;
   color : white;
+}
+
+#map{
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
