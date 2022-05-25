@@ -68,6 +68,7 @@ class BooksController < ApplicationController
       overview: error_prevention_overview(parse),
       publishing_date: (parse['items'][0]['volumeInfo']['publishedDate'].length == 7 ? "#{parse['items'][0]['volumeInfo']['publishedDate']}-02" : parse['items'][0]['volumeInfo']['publishedDate']),
       image_url: error_prevention_image(parse),
+      # image_url: parse.dig(:items, 0, :volumeInfo, :imageLinks, :thumbnail),
       category: error_prevention_category(parse)
     }
   end
@@ -84,7 +85,6 @@ class BooksController < ApplicationController
     end
   end
 
-  # Refacto avec hash method dig
 
   def error_prevention_image(parse)
     begin
