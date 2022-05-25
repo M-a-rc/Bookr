@@ -15,7 +15,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    my_hash = book_params.merge(scrapper(book_params[:title]))
+    my_hash = book_params.merge(gBooksApi(book_params[:title]))
     @book = current_user.books.new(my_hash)
     if @book.save
       redirect_to book_path(@book)
@@ -50,7 +50,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  def scrapper(title)
+  def gBooksApi(title)
     url = "https://www.googleapis.com/books/v1/volumes?q=#{title}"
     parse_serialized = URI.open(url).read
     parse = JSON.parse(parse_serialized)
