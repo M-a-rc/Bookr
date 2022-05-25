@@ -8,22 +8,31 @@
 <div class="mb-3">
   <%= link_to 'Ajouter un livre', new_book_path, class:"btn btn-success" %>
 </div>
-<div class="row ">
-  <% @books.each do |book| %>
-    <div class="col-md-4 card-book mb-3 text-center">
-    <%= image_tag book.image_url, :class => 'card-img-top img-thumbnail rounded' %>
-      <div class="wrap">
-      <%= link_to "",book_path(book),class: 'card-click'  %>
-      <div class="card-book-infos">
-        <h2> <%= book.title %> </h2>
-        <p class="mb-5"> <%= book.overview %></p>
-        <a href="#">voir +</a>
-      </div>
-      </div>
-    </div>
-  <% end %>
+<div class="row">
 
-  <div class="col-md-4 card-map">
-    mapbox
+  <div class="col-md-8">
+    <div class="row">
+      <% @books.each do |book| %>
+
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <%= image_tag book.image_url, class: 'card-img-top img-thumbnail rounded' %>
+            <div class="card-body">
+              <p class="card-text"><%= book.title %></p>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+
   </div>
+
+  <div class="col-md-4">
+    <div style="width: 100%; height: 600px;"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
+
 </div>
