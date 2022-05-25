@@ -34,7 +34,7 @@
         <% if user_signed_in? && !current_page?('/profilepage') %>
           <%= (link_to "Personnal space",'/profilepage') %>
         <% else %>
-          <%= (link_to "Home Page", books_path) %>
+          <%= (link_to "Home", books_path) %>
        <% end %>
       </div>
       <div class="profile">
