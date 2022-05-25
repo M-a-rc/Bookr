@@ -11,7 +11,8 @@ class BooksController < ApplicationController
     @markers = @books.geocoded.map do |book|
       {
         lat: book.latitude,
-        lng: book.longitude
+        lng: book.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { book: book })
       }
     end
   end
