@@ -1,27 +1,42 @@
 <!-- Banner -->
-<div class="banner">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.nice.fr/uploads/media/paysage/0001/24/thumb_23445_paysage_big.jpg);">
   <div class="container">
     <h1>La location de livres pour tous</h1>
-
-    <%= link_to "Commencer", books_path %>
+    <div class="mb-3">
+      <%= link_to "Commencer", books_path %>
+    </div>
   </div>
 </div>
 <!-- Fin banner -->
 
+<div class="container">
 <!-- Top Book -->
-<h2> Nos meilleurs livres :</h2>
-<ol>
-  <% @books.each do |book| %>
-    <li><%= book.title %></li>
-  <% end %>
-</ol>
-<!-- Fin top Book -->
+  <div class="row">
+  <h2 class="mt-2 alert-info"> Nos meilleurs livres :</h2>
+    <ul>
+      <% @books.each do |book| %>
+        <div class="col-sm-4 mb-1 text-center">
+        <div class="card" style="width: 18rem;">
+            <%= image_tag book.image_url, :class => 'card-img-top rounded' %>
+          <div class="card-body">
+            <li><%= link_to book.title, book_path(book) %></li>
+          </div>
+        </div>
 
-<!-- Top User -->
-<h2> Nos meilleurs utilisateurs :</h2>
-<ol>
-  <% @users.each do |user| %>
-    <li><%= user.username %></li>
-  <% end %>
-</ol>
-<!-- Fin top User -->
+        </div>
+      <% end %>
+    </ul>
+    <!-- Fin top Book -->
+
+    <!-- Top User -->
+    <h2 class="mt-3 alert-info"> Nos meilleurs utilisateurs :</h2>
+    <ul>
+      <% @users.each do |user| %>
+        <div class="col-sm-4 mb-3">
+          <li><%= user.username %></li>
+        </div>
+      <% end %>
+    </ul>
+  <!-- Fin top User -->
+  </div>
+</div>
