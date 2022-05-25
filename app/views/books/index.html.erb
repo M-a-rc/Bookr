@@ -2,38 +2,40 @@
   <!-- div livre 2 par lignes 6 au total -->
   <!-- div mapbox -->
 <!-- fin div content -->
+<div class="container">
 
-<h2>Index Book</h2>
+  <h2>Index Book</h2>
 
-<div class="mb-3">
-  <%= link_to 'Ajouter un livre', new_book_path, class:"btn btn-success" %>
-</div>
-<div class="row">
+  <div class="mb-3">
+    <%= link_to 'Ajouter un livre', new_book_path, class:"btn btn-success" %>
+  </div>
+  <div class="row">
 
-  <div class="col-md-8">
-    <div class="row">
-      <% @books.each do |book| %>
+    <div class="col-md-8">
+      <div class="row">
+        <% @books.each do |book| %>
 
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <%= link_to "",book_path(book),class: "card-click"  %>
-            <%= image_tag book.image_url, class: 'card-img-top img-thumbnail rounded' %>
-            <div class="card-body">
-              <p class="card-text"><%= book.title %></p>
+          <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <%= link_to "",book_path(book),class: "card-click"  %>
+              <%= image_tag book.image_url, class: 'card-img-top img-thumbnail rounded' %>
+              <div class="card-body">
+                <p class="card-text"><%= book.title %></p>
+              </div>
             </div>
           </div>
-        </div>
 
-      <% end %>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="col-md-4">
+      <div id="map" style="width: 100%;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" ></div>
     </div>
 
   </div>
-
-  <div class="col-md-4">
-    <div id="map" style="width: 100%; height: 600px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="pk.eyJ1IjoibWEtci1jIiwiYSI6ImNsMnVhNjY2MTAwNDEzaW1nMWV4bWozZmgifQ.FJzvX247gD-yfnJbC_rlUQ"></div>
-  </div>
-
 </div>

@@ -3,19 +3,18 @@
 <div class="container">
 
   <div class="row">
-  <h3>Your books</h3>
+    <h3>Your books</h3>
     <% @books.each do |book| %>
-      <div class="col-md-4 card-book">
-        <%= link_to book_path(book), class:"text-decoration-none" do  %>
-        <img src="" alt="">
-        <div class="card-book-infos">
-          <h2> <%= book.title %> </h2>
-          <%= link_to "Edit", edit_book_path(book) %>
-          <%= link_to "Delete", book_path(book), method: :delete %>
-          <% end %>
+        <div class="col-sm-4 mb-1 text-center">
+        <div class="card" style="width: 18rem;">
+            <%= image_tag book.image_url, :class => 'card-img-top rounded' %>
+          <div class="card-body">
+            <li><%= link_to book.title, book_path(book) %></li>
+          </div>
         </div>
-      </div>
-    <% end %>
+
+        </div>
+      <% end %>
   </div>
 
   <br>
@@ -27,7 +26,6 @@
     <h3>Your orders</h3>
     <% @orders.each do |order| %>
       <div class="col-md-4 card-order">
-        <img src="" alt="">
         <div class="card-order-infos">
           <h2> Title: <%= order.book.title %> </h2>
           <p> Renter: <%= order.user.username %></p>
