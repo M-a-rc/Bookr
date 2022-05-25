@@ -11,6 +11,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "pages/show";
 
 $text : black;
 $card : #F6F6F6;
@@ -27,4 +28,8 @@ a {
   padding : 15px;
   color: white;
   border-radius: 5%;
+}
+
+a:hover {
+  color:white;
 }
