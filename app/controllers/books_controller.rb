@@ -2,7 +2,9 @@ class BooksController < ApplicationController
   require "json"
   require "open-uri"
 
+
   before_action :set_book, only: %i[show edit update destroy]
+
   def index
     @books = Book.all
 
