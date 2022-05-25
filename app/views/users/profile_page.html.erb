@@ -1,0 +1,41 @@
+<h2>Welcome back, <%= current_user.username %></h2>
+
+<div class="container">
+
+  <div class="row">
+  <h3>Your books</h3>
+    <% @books.each do |book| %>
+      <div class="col-md-4 card-book">
+        <%= link_to book_path(book), class:"text-decoration-none" do  %>
+        <img src="" alt="">
+        <div class="card-book-infos">
+          <h2> <%= book.title %> </h2>
+          <%= link_to "Edit", edit_book_path(book) %>
+          <%= link_to "Delete", book_path(book), method: :delete %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <br>
+  <hr>
+  <br>
+
+
+  <div class="row">
+    <h3>Your orders</h3>
+    <% @orders.each do |order| %>
+      <div class="col-md-4 card-order">
+        <img src="" alt="">
+        <div class="card-order-infos">
+          <h2> Title: <%= order.book.title %> </h2>
+          <p> Renter: <%= order.user.username %></p>
+          <p> Message: <%= order.message %></p>
+          <p> Date: <%= order.starting_date %> --> <%= order.starting_date %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
