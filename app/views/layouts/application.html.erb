@@ -30,10 +30,12 @@
       <div class="login">
 
         <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete) : (link_to "Sign in", new_user_session_path)  %>
-        <%= user_signed_in? ? (link_to "Personnal space",'/profilepage') : (link_to "Home Page", books_path) %>
-        <%= current_page? ? (link_to_if current_page?, 'Home', books_path) : (link_to "Personnal Space", books_path) %>
 
-
+        <% if user_signed_in? && !current_page?('/profilepage') %>
+          <%= (link_to "Personnal space",'/profilepage') %>
+        <% else %>
+          <%= (link_to "Home Page", books_path) %>
+       <% end %>
       </div>
       <div class="profile">
         name
