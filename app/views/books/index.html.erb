@@ -5,20 +5,21 @@
 
 <h2>Index Book</h2>
 
-<%= link_to 'Ajouter un livre', new_book_path, class:"btn btn-success" %>
-
-<div class="row">
+<div class="mb-3">
+  <%= link_to 'Ajouter un livre', new_book_path, class:"btn btn-success" %>
+</div>
+<div class="row ">
   <% @books.each do |book| %>
-    <div class="col-md-4 card-book">
-      <%= link_to book_path(book), class:"text-decoration-none" do  %>
-      <img src="" alt="">
+    <div class="col-md-4 card-book mb-3 text-center">
+    <%= image_tag book.image_url, :class => 'card-img-top img-thumbnail rounded' %>
+      <div class="wrap">
+      <%= link_to "",book_path(book),class: 'card-click'  %>
       <div class="card-book-infos">
         <h2> <%= book.title %> </h2>
-        <p> <%= book.overview %></p>
-        <%= link_to "Edit", edit_book_path(book) %>
-        <%= link_to "Delete", book_path(book), method: :delete %>
+        <p class="mb-5"> <%= book.overview %></p>
+        <a href="#">voir +</a>
       </div>
-      <% end %>
+      </div>
     </div>
   <% end %>
 

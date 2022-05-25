@@ -11,3 +11,20 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+$text : black;
+$card : #F6F6F6;
+$background-body : #DFEFF0;
+$bg-button : #295E6A;
+
+body{
+background-color: $background-body;
+}
+
+a {
+  text-decoration : none;
+  background-color: $bg-button;
+  padding : 15px;
+  color: white;
+  border-radius: 5%;
+}
