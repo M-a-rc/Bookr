@@ -1,20 +1,25 @@
-<div class="row">
-  <div class="card-book col-md-8">
-    <h2><%= @book.title %> - <%= @book.author %></h2>
-    <em><%= @book.address %><%= @book.publishing_date %><%= @book.category %><%= @book.price %>€</em>
-    <div class="card">
-      <div class="book-img">
-        <%= image_tag @book.image_url  %>
-      </div>
-      <div class="book-overview">
-        <p><%= @book.overview %></p>
+<div class="py-5">
+  <div class="row">
+    <div class="card col-md-12 text-center mb-3 p-3">
+      <h2><%= @book.title %> - <%= @book.author %></h2>
+      <em><%= @book.address %>&nbsp;<%= @book.publishing_date %>&nbsp;<%= @book.category %>&nbsp;<%= @book.price %>€</em>
+      <div class="card ">
+        <div class="book-img d-flex">
+          <%= image_tag @book.image_url, :class => "img-thumbnail"  %>
+          <div class="card-content">
+            <div class="book-overview ">
+              <p><%= @book.overview %></p>
+            </div>
+            <div class="orders">
+              <%= link_to "Reserver", new_book_order_path(@book) %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+ </div>
 
-<%= link_to "Back", books_path %>
+<%= link_to "Back", books_path,class: "btn" %>
 
-  <div class="orders">
-    <%= link_to "Reserver", new_book_order_path(@book) %>
-  </div>
+
 </div>
