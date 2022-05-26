@@ -15,12 +15,13 @@
 
   <body>
 
-
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <a class="navbar-brand" href="books">
- <img src="<%= asset_path('logo.png') %>" alt="logo" id="logo">
-</a>
+
+    <%= link_to root_path do  %>
+      <img src="<%= asset_path('logo.png') %>" alt="logo" id="logo">
+    <% end %>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,9 +31,8 @@
           <li class="nav-item dropdown">
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= asset_path('account.png') %>" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-               <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item") : (link_to "Sign in", new_user_session_path, class:"dropdown-item")  %>
-
-              <a class="dropdown-item" href="profilepage">My Account</a>
+              <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item") : (link_to "Sign in", new_user_session_path, class:"dropdown-item")  %>
+              <%= link_to "My Account", profilepage_path, class:"dropdown-item"  %>
             </div>
           </li>
           <!--li class="nav-item"-->
