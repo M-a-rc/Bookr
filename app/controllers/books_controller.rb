@@ -6,7 +6,12 @@ class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
 
   def index
-    @books = Book.all
+    # TODO SearchBar !
+    if params[:query].present?
+      @books = Book.search_by_title_and_author(params[:query])
+    else
+      @books = Book.all
+    end
 
     @markers = @books.geocoded.map do |book|
       {
