@@ -10,44 +10,37 @@
 <!-- Fin banner -->
 
 <div class="container">
-<!-- Top Book -->
-
+  <!-- Top Book -->
+  <h2 class="mt-2 alert-info"> Nos derniers ajouts :</h2>
   <div class="row">
-    <h2 class="mt-2 alert-info"> Nos derniers ajouts :</h2>
-      <% @books.each do |book| %>
-
+    <% @books.each do |book| %>
       <%# card top %>
-        <div class="col-sm-4 mb-1 text-center">
-          <div class="card" style="width: 18rem;">
-            <%= image_tag book.image_url, style:"height=300px; width=100px" %>
-            <div class="card-body">
-              <h5 class="card-title"> <%= book.title %> </h5>
-              <p class="card-text"> <%= book.author %>, <%= book.publishing_date %> </p>
+      <div class="col-md-3">
+        <%= link_to book_path(book) do %>
+          <div class="my-card mb-3" style="width: 18rem;">
+            <div class ="my-card-upper-image" style="background-image: url(<%= image_path book.image_url %>); background-size: contain; background-position: center; background-repeat: no-repeat">
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"> <%= book.price %>/ day </li>
-              <%# <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li> %>
-            </ul>
+            <hr>
             <div class="card-body">
-              <%# <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a> %>
+              <h5><%= book.title %></h5>
+              <p> <%= book.author %>, <%= book.publishing_date.year %> </p>
             </div>
           </div>
-        </div>
-      <%# card bottom %>
-      <% end %>
-    <!-- Fin top Book -->
-
-    <!-- Top User -->
-    <h2 class="mt-3 alert-info"> Nos top utilisateurs :</h2>
-    <ul>
-      <% @users.each do |user| %>
-        <div class="col-sm-4 mb-3">
-          <li><%= user.username %></li>
-        </div>
-      <% end %>
-    </ul>
-  <!-- Fin top User -->
+        <% end %>
+      </div>
+    <% end %>
+    <%# card bottom %>
   </div>
+
+  <!-- Top User -->
+  <h2 class="mt-3 alert-info"> Nos top utilisateurs :</h2>
+  <ul>
+    <% @users.each do |user| %>
+      <div class="col-sm-4 mb-3">
+        <li><%= user.username %></li>
+      </div>
+    <% end %>
+  </ul>
+  <!-- Fin top User -->
+
 </div>

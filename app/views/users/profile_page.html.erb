@@ -1,46 +1,52 @@
-<h2>Welcome back, <%= current_user.username %></h2>
-
 <div class="container">
+  <h2>Welcome back, <%= current_user.username %></h2>
 
-  <div class="row">
-    <h3>Your books</h3>
-    <% @books.each do |book| %>
-        <div class="col-sm-4 mb-1 text-center">
-        <div class="card" style="width: 18rem;">
-            <%= image_tag book.image_url, :class => 'card-img-top rounded' %>
-          <div class="card-body">
-            <li><%= link_to book.title, book_path(book) %></li>
-          </div>
-        </div>
+  <div class="container">
 
+    <div class="row">
+      <h3>Your books</h3>
+      <% @books.each do |book| %>
+        <div class="col-md-3">
+          <%= link_to book_path(book) do %>
+            <div class="my-card mb-3" style="width: 18rem;">
+              <div class ="my-card-upper-image" style="background-image: url(<%= image_path book.image_url %>); background-size: contain; background-position: center; background-repeat: no-repeat">
+              </div>
+              <hr>
+              <div class="card-body">
+                <h5><%= book.title %></h5>
+                <p> <%= book.author %>, <%= book.publishing_date.year %> </p>
+              </div>
+            </div>
+          <% end %>
         </div>
       <% end %>
-  </div>
+    </div>
 
-  <br>
-  <hr>
-  <br>
+    <br>
+    <hr>
+    <br>
 
 
-  <div class="row">
-    <h3>Your orders</h3>
-    <% @orders.each do |order| %>
-      <div class="col-md-4 card-order">
-        <div class="card-order-infos">
-          <h2> Title: <%= order.book.title %> </h2>
-          <p> Renter: <%= order.user.username %></p>
-          <p> Message: <%= order.message %></p>
-          <p> Date: <%= order.starting_date %> --> <%= order.ending_date %></p>
-          <p>Status: <%= order.status %></p>
+    <div class="row">
+      <h3>Your orders</h3>
+      <% @orders.each do |order| %>
+        <div class="col-md-4 card-order">
+          <div class="card-order-infos">
+            <h2> Title: <%= order.book.title %> </h2>
+            <p> Renter: <%= order.user.username %></p>
+            <p> Message: <%= order.message %></p>
+            <p> Date: <%= order.starting_date %> --> <%= order.ending_date %></p>
+            <p>Status: <%= order.status %></p>
 
-          <% Order::STATUSES.each do |status| %>
-            <%= link_to change_status_order_path(order, status: status), method: :patch do %>
-              <%= status %>
+            <% Order::STATUSES.each do |status| %>
+              <%= link_to change_status_order_path(order, status: status), method: :patch do %>
+                <%= status %>
+              <% end %>
             <% end %>
-          <% end %>
 
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
