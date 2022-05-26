@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     if params[:query].present?
       @books = Book.search_by_title_and_author(params[:query])
     else
-      @books = Book.all
+      @books = user_signed_in? ? Book.where.not(user: current_user) : Book.all
     end
 
     @markers = @books.geocoded.map do |book|

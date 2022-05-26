@@ -21,9 +21,7 @@
 
 
   <div class="mb-3">
-    <% if !current_user.nil? %>
-      <%= link_to 'Add a book', new_book_path, class:"btn btn-primary" %>
-    <% end %>
+    <%= user_signed_in? ? (link_to 'Add a book', new_book_path, class:"btn btn-success") : (link_to 'Add a book', new_user_session_path, class:"btn btn-success")  %>
   </div>
 
   <div class="row">
@@ -49,10 +47,9 @@
               </div>
             <% end %>
           </div>
-
         <% end %>
-      </div>
 
+      </div>
     </div>
 
     <div class="col-sm-12 col-md-6 col-lg-6">
