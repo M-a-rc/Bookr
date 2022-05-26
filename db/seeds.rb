@@ -8,7 +8,7 @@
 # TODO: Write a seed
 require 'faker'
 
-Book.destroy_all unless Rails.env.production?
+Book.destroy_all
 
 puts "Creating 5 users..."
 
