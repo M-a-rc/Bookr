@@ -10,8 +10,7 @@ class BooksController < ApplicationController
     if params[:query].present?
       @books = Book.search_by_title_and_author(params[:query])
     else
-      @books = Book.all
-      # user_signed_in? ? (@books = Book.all_except(user_id: current_user)) : (@books = Book.all)
+      @books = user_signed_in? ? Book.where.not(user: current_user) : Book.all
     end
 
     @markers = @books.geocoded.map do |book|
@@ -21,8 +20,6 @@ class BooksController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { book: book })
       }
     end
-
-
   end
 
   def show

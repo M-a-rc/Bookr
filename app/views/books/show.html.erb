@@ -15,7 +15,9 @@
                 <p><%= @book.overview %></p>
               </div>
               <div class="orders">
-                <%= @book.user_id == current_user ? ("") : (link_to "Reserver", new_book_order_path(@book))%>
+                <% if @book.user != current_user %>
+                  <%= link_to "Reserver", new_book_order_path(@book) %>
+                <% end %>
               </div>
             </div>
           </div>
