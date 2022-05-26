@@ -15,8 +15,7 @@
                 <p><%= @book.overview %></p>
               </div>
               <div class="orders">
-                <%= user_signed_in? ? (link_to 'Ajouter un livre', new_book_path, class:"btn btn-success") : (link_to 'Ajouter un livre', new_user_session_path, class:"btn btn-success")  %>
-                <%= link_to "Reserver", new_book_order_path(@book) %><% if !current_user %>
+                <%= @book.user_id == current_user ? ("") : (link_to "Reserver", new_book_order_path(@book))%>
               </div>
             </div>
           </div>
