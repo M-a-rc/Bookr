@@ -2,11 +2,11 @@ class BooksController < ApplicationController
   require "json"
   require "open-uri"
 
-
   before_action :set_book, only: %i[show edit update destroy]
 
   def index
     # TODO SearchBar !
+
     if params[:query].present?
       @books = Book.search_by_title_and_author(params[:query])
     else
