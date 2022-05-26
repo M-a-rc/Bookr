@@ -8,11 +8,7 @@ class BooksController < ApplicationController
   def index
     # TODO SearchBar !
     if params[:query].present?
-      sql_query = " \
-        books.title ILIKE :query \
-        OR books.author ILIKE :query \
-      "
-      @books = Book.where(sql_query, query: "%#{params[:query]}%")
+      @books = Book.search_by_title_and_author(params[:query])
     else
       @books = Book.all
     end
