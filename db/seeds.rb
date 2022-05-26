@@ -14,7 +14,7 @@ puts "Creating 5 users..."
 
 if User.all.empty?
   5.times do
-    n = 0
+    n = 1
     User.create(username: "user#{n}", email: "user#{n}@faker.com", password: "123456")
   end
   puts "Users created"

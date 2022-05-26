@@ -1,0 +1,16 @@
+.banner{
+  height:70vh;
+  background-position: center;
+  background-size: cover;
+    .navbar-lewagon{
+      background-color: rgba($color: #000000, $alpha: 0.1);
+    }
+    h1 {
+      color: white;
+      display: inline-block;
+      size: 48px;
+    }
+    a {
+      display: inline-block;
+    }
+}
