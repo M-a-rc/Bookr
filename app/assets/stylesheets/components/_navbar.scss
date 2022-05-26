@@ -3,6 +3,7 @@
   background: #F4F4F4;
   padding-bottom: 1px;
   border-bottom: solid 1px #8f8f8f37;
+  margin-bottom: 10px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,5 +11,9 @@
 }
 
 .navbar #logo {
-  width: 90px;
+  width: 100px;
+}
+
+#navbarDropdown {
+  width: 40px;
 }
