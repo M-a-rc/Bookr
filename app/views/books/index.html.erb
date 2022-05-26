@@ -19,7 +19,9 @@
 
 <div class="container">
   <div class="mb-3">
-    <%= link_to 'Add a book', new_book_path, class:"btn btn-success" %>
+    <% if !current_user.nil? %>
+      <%= link_to 'Add a book', new_book_path, class:"btn btn-success" %>
+    <% end %>
   </div>
 
   <div class="row">
