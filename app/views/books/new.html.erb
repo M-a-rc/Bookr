@@ -1,9 +1,9 @@
 <div class="container">
 
-  <h2> Add new Book</h2>
+  <h2 class="pt-4"> Add new Book</h2>
+    <div class="py-5">
+    <%= render "form", book: @book %>
 
-  <%= render "form", book: @book %>
-
-  <%= link_to "Back", books_path %>
-
+    <%= link_to "Back", books_path, class:"btn btn-primary" %>
+  </div>
 </div>

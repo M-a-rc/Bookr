@@ -41,20 +41,6 @@
 
   <h2>Available books</h2>
 
-
-  <div class="search mb-3">
-    <%= form_tag books_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a book"
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-
-
   <div class="mb-3">
     <%= user_signed_in? ? (link_to 'Add a book', new_book_path, class:"btn btn-success") : (link_to 'Add a book', new_user_session_path, class:"btn btn-success")  %>
   </div>
@@ -76,8 +62,8 @@
                   <p> <%= book.author %>, <%= book.publishing_date.year %> </p>
                 </div>
                 <div class="price-card">
-                <p class="price-value"><%= book.price%>€</p>
-                <p class="price-txt">/day</p>
+                  <p class="price-value"><%= book.price%>€</p>
+                  <p class="price-txt">/day</p>
                 </div>
               </div>
             <% end %>
