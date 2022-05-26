@@ -18,6 +18,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def change_status
+    @order = Order.find(params[:id])
+
+    if params[:status].present? && Order::STATUSES.include?(params[:status])
+      @order.update(status: params[:status])
+    end
+    redirect_to profilepage_path, notice: "Status updated to #{@order.status}"
+  end
+
   private
 
   def order_params
