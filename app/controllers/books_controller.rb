@@ -2,15 +2,14 @@ class BooksController < ApplicationController
   require "json"
   require "open-uri"
 
-
   before_action :set_book, only: %i[show edit update destroy]
 
   def index
     # TODO SearchBar !
     if params[:query].present?
-      @books = Book.search_by_title_and_author(params[:query])
+      @books = policy_scope(Book).search_by_title_and_author(params[:query])
     else
-      @books = Book.all
+      @books = policy_scope(Book).all
     end
 
     @markers = @books.geocoded.map do |book|
@@ -32,6 +31,7 @@ class BooksController < ApplicationController
   def create
     my_hash = book_params.merge(gBooksApi(book_params[:title]))
     @book = current_user.books.new(my_hash)
+    authorize @book
     if @book.save
       redirect_to book_path(@book)
     else
