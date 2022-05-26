@@ -6,10 +6,11 @@ class BooksController < ApplicationController
 
   def index
     # TODO SearchBar !
+
     if params[:query].present?
-      @books = policy_scope(Book).search_by_title_and_author(params[:query])
+      @books = Book.search_by_title_and_author(params[:query])
     else
-      @books = policy_scope(Book).all
+      @books = Book.all
     end
 
     @markers = @books.geocoded.map do |book|
@@ -31,7 +32,6 @@ class BooksController < ApplicationController
   def create
     my_hash = book_params.merge(gBooksApi(book_params[:title]))
     @book = current_user.books.new(my_hash)
-    authorize @book
     if @book.save
       redirect_to book_path(@book)
     else
