@@ -7,9 +7,22 @@
   <h2>Available books</h2>
 
 
+  <div class="search mb-3">
+    <%= form_tag books_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a book"
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+
   <div class="mb-3">
     <% if !current_user.nil? %>
-      <%= link_to 'Add a book', new_book_path, class:"btn btn-success" %>
+      <%= link_to 'Add a book', new_book_path, class:"btn btn-primary" %>
     <% end %>
   </div>
 
@@ -50,5 +63,4 @@
     </div>
 
   </div>
-</div>
 </div>
