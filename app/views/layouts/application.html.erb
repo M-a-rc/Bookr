@@ -21,13 +21,6 @@
         logo
       </div>
       &nbsp;&nbsp;
-      <div class="search">
-        <form action="">
-          <input type="text">
-          <input type="submit">
-        </form>
-      </div>
-      &nbsp;&nbsp;
       <div class="login">
 
         <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete) : (link_to "Sign in", new_user_session_path)  %>
