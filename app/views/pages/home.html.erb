@@ -14,7 +14,6 @@
 
   <div class="row">
     <h2 class="mt-2 alert-info"> Nos derniers ajouts :</h2>
-    <ul>
       <% @books.each do |book| %>
 
       <%# card top %>
@@ -37,21 +36,7 @@
           </div>
         </div>
       <%# card bottom %>
-
-
-
-
-        <div class="col-sm-4 mb-1 text-center">
-        <div class="card" style="width: 18rem;">
-            <%= image_tag book.image_url, :class => 'card-img-top rounded' %>
-          <div class="card-body">
-            <li><%= link_to book.title, book_path(book) %></li>
-          </div>
-        </div>
-
-        </div>
       <% end %>
-    </ul>
     <!-- Fin top Book -->
 
     <!-- Top User -->
