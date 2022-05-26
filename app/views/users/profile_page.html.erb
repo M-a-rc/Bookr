@@ -8,7 +8,7 @@
       <% @books.each do |book| %>
         <div class="col-md-3">
           <%= link_to book_path(book) do %>
-            <div class="my-card mb-3" style="width: 18rem;">
+            <div class="my-card mb-3">
               <div class ="my-card-upper-image" style="background-image: url(<%= image_path book.image_url %>); background-size: contain; background-position: center; background-repeat: no-repeat">
               </div>
               <hr>

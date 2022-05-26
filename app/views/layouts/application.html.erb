@@ -14,41 +14,104 @@
   </head>
 
   <body>
-    <p class="notice "><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="navbar">
-      <div class="container-fluid">
-        logo
-      </div>
-      &nbsp;&nbsp;
-      <div class="login">
 
-        <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete) : (link_to "Sign in", new_user_session_path)  %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
 
-        <% if user_signed_in? && !current_page?('/profilepage') %>
-          <%= (link_to "Personnal space",'/profilepage') %>
-        <% else %>
-          <%= (link_to "Home", books_path) %>
-       <% end %>
-      </div>
-      <div class="profile">
-        name
-      </div>
+    <%= link_to root_path do  %>
+      <img src="<%= asset_path('logo.png') %>" alt="logo" id="logo">
+    <% end %>
+
+    <div>
+      <%= form_tag books_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-inline",
+          placeholder: "Find a book"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
     </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= asset_path('account.png') %>" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item") : (link_to "Sign in", new_user_session_path, class:"dropdown-item")  %>
+              <%= link_to "My Account", profilepage_path, class:"dropdown-item"  %>
+            </div>
+          </li>
+          <!--li class="nav-item"-->
+          <!--/li-->
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
     <div class="">
     <%= yield %>
     </div>
-    <div class="footer">
-      <div class="footer-links">
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <div class="footer-copyright">
-        This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+
+
+
+
+<!-- Footer -->
+  <footer class="bg-white">
+    <div class="container py-5">
+      <div class="row py-4">
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" class="mb-3">
+          <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4">Beauties</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><a href="#" class="text-muted">Enor</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Cyp</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Marc</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Brice</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4">Company</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><a href="users/sign_in" class="text-muted">Login</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Register</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Wishlist</a></li>
+            <li class="mb-2"><a href="#" class="text-muted">Our Products</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
+          <p class="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
+          <div class="p-1 rounded border">
+            <div class="input-group">
+              <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
+              <div class="input-group-append">
+                <button id="button-addon1" type="submit" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Copyrights -->
+    <div class="bg-light py-4">
+      <div class="container text-center">
+        <p class="text-muted mb-0 py-2">© 2022 BookR All rights reserved to Team Populum.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- End -->
+
+
+
   </body>
 </html>
