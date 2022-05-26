@@ -6,6 +6,18 @@
 
   <h2>Index Book</h2>
 
+      <div class="search mb-3">
+        <%= form_tag books_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a book"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+<div class="container">
   <div class="mb-3">
     <%= link_to 'Ajouter un livre', new_book_path, class:"btn btn-success" %>
   </div>
@@ -38,4 +50,5 @@
     </div>
 
   </div>
+</div>
 </div>
