@@ -13,9 +13,9 @@ Book.destroy_all unless Rails.env.production?
 puts "Creating 5 users..."
 
 if User.all.empty?
-  n = 0
   5.times do
-    User.create(username: Faker::Games::Pokemon.name, email: "user#{n += 1}@faker.com", password: "123456")
+    n = 0
+    User.create(username: "user#{n}", email: "user#{n}@faker.com", password: "123456")
   end
   puts "Users created"
 else
