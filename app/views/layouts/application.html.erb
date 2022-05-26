@@ -14,27 +14,36 @@
   </head>
 
   <body>
-    <p class="notice "><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="navbar">
-      <div class="container-fluid">
-        logo
-      </div>
-      &nbsp;&nbsp;
-      <div class="login">
 
-        <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete) : (link_to "Sign in", new_user_session_path)  %>
 
-        <% if user_signed_in? && !current_page?('/profilepage') %>
-          <%= (link_to "Personnal space",'/profilepage') %>
-        <% else %>
-          <%= (link_to "Home", books_path) %>
-       <% end %>
-      </div>
-      <div class="profile">
-        name
-      </div>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="books">
+ <img src="<%= asset_path('logo.png') %>" alt="logo" id="logo">
+</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= asset_path('account.png') %>" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+               <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item") : (link_to "Sign in", new_user_session_path, class:"dropdown-item")  %>
+
+              <a class="dropdown-item" href="profilepage">My Account</a>
+            </div>
+          </li>
+          <!--li class="nav-item"-->
+          <!--/li-->
+      </ul>
     </div>
+  </div>
+</div>
+
+
+
     <div class="">
     <%= yield %>
     </div>
