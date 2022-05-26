@@ -11,21 +11,32 @@
 
 <div class="container">
 <!-- Top Book -->
+
   <div class="row">
     <h2 class="mt-2 alert-info"> Nos derniers ajouts :</h2>
-    <ul>
       <% @books.each do |book| %>
+
+      <%# card top %>
         <div class="col-sm-4 mb-1 text-center">
-        <div class="card" style="width: 18rem;">
-            <%= image_tag book.image_url, :class => 'card-img-top rounded' %>
-          <div class="card-body">
-            <li><%= link_to book.title, book_path(book) %></li>
+          <div class="card" style="width: 18rem;">
+            <%= image_tag book.image_url, style:"height=300px; width=100px" %>
+            <div class="card-body">
+              <h5 class="card-title"> <%= book.title %> </h5>
+              <p class="card-text"> <%= book.author %>, <%= book.publishing_date %> </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"> <%= book.price %>/ day </li>
+              <%# <li class="list-group-item">Dapibus ac facilisis in</li>
+              <li class="list-group-item">Vestibulum at eros</li> %>
+            </ul>
+            <div class="card-body">
+              <%# <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a> %>
+            </div>
           </div>
         </div>
-
-        </div>
+      <%# card bottom %>
       <% end %>
-    </ul>
     <!-- Fin top Book -->
 
     <!-- Top User -->
