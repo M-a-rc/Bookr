@@ -4,12 +4,14 @@
     <div class="row">
       <div class="card col-md-12 text-center mb-3 p-3">
         <h2><%= @book.title %> - <%= @book.author %></h2>
-        <em><%= @book.address %>&nbsp;<%= @book.publishing_date %>&nbsp;<%= @book.category %>&nbsp;<%= @book.price %>€</em>
+        <em>&nbsp;<%= @book.publishing_date %>&nbsp;category: <%= @book.category %>&nbsp;</em>
+        <p><%= JSON.parse(@book.address).join(", ") %> <%= @book.price %>€/day</p>
+        <p> Propriétaire : <%= @book.user.username%></p>
         <div class="card ">
           <div class="book-img d-flex">
             <%= image_tag @book.image_url, :class => "img-thumbnail"  %>
             <div class="card-content">
-              <div class="book-overview ">
+              <div class="book-overview">
                 <p><%= @book.overview %></p>
               </div>
               <div class="orders">
