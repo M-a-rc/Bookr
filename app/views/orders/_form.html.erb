@@ -2,15 +2,15 @@
   <%= f.input :starting_date %>
   <%= f.input :ending_date %>
   <%= f.input :message %>
-  <%= f.submit "Validate Order", class: "btn btn-success", data: { toggle: "modal", target: "SuccessReservation" } %>
+  <%= f.submit "Validate Order", class: "btn btn-success", data: { toggle: "modal", target: "myModal" }%>
 <% end %>
 
 <!-- Modal -->
-<div class="modal fade" id="SuccessReservation" tabindex="-1" role="dialog" aria-labelledby="SuccessReservationTitle" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="myModalLongTitle">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
