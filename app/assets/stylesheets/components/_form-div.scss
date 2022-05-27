@@ -1,0 +1,24 @@
+.form-div{
+  text-align: center;
+  background-color: white;
+  border-radius: 8px;
+  width:500px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 20px 50px;
+
+    form{
+      margin-top: 50px;
+    }
+
+    .form-check {
+      width: 100%;
+      display: flex;
+      justify-content:center
+    }
+
+    .form-check-label {
+      margin-left: 10px;
+    }
+}

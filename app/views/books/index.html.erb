@@ -3,17 +3,17 @@
     <div class="container-fluid">
 
       <%= link_to root_path do  %>
-        <img src="<%= asset_path('logo.png') %>" alt="logo" id="logo">
+        <img src="<%= asset_path('logo.png') %>" alt="logo" id="logo" >
       <% end %>
 
       <div>
         <%= form_tag books_path, method: :get do %>
           <%= text_field_tag :query,
             params[:query],
-            class: "form-inline",
-            placeholder: "Find a book"
+            class: "form-inline my-2 my-lg-0",
+            placeholder: "Find book"
           %>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
+          <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
         <% end %>
       </div>
 

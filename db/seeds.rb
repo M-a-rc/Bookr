@@ -9,17 +9,13 @@
 require 'faker'
 
 Book.destroy_all
+User.destroy_all
 
 puts "Creating 5 users..."
 
-if User.all.empty?
-  5.times do
-    n = 1
-    User.create(username: "user#{n}", email: "user#{n}@faker.com", password: "123456")
-  end
-  puts "Users created"
-else
-  puts "Users already created"
+n = 0
+5.times do
+  User.create(username: "user#{n += 1}", email: "user#{n += 1}@faker.com", password: "123456")
 end
 
 puts "Creating Books"
