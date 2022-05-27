@@ -48,7 +48,7 @@
 
 
             <% Order::STATUSES.each do |status| %>
-              <%= link_to change_status_order_path(order, status: status), method: :patch, remote: true do %>
+              <%= link_to change_status_order_path(order, status: status), method: :patch, class:"btn btn-light", remote: true do %>
                 <%= status %>
               <% end %>
             <% end %>
