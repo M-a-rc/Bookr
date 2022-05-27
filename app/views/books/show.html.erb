@@ -52,7 +52,7 @@
             <p class="price-value"><%= @book.price%>€</p>
             <p class="price-txt">/day</p>
           </div>
-          <%= link_to "Get this book!", new_book_order_path(@book), class:"btn btn-primary" %>
+          <%= @book.user == current_user ? ("This is your book") : (link_to "Get this book!", new_book_order_path(@book), class:"btn btn-primary") %>
         </div>
       </div>
     </div>
