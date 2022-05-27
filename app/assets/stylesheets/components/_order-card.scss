@@ -4,4 +4,10 @@
   border-radius: 8px;
   box-shadow: 5px 1px 10px lightgrey;
   padding: 20px;
+
+  .btn:hover{
+    background-color: white;
+    border: solid;
+    border-color: gray;
+  }
 }

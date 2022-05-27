@@ -38,14 +38,24 @@
       <h3>Your orders</h3>
       <% @orders.each do |order| %>
         <div class="col-md-4 card-order">
-          <div class="order-card">
+          <div class="order-card" id="<%= "order-#{order.id}"%>">
             <h5 class="text-center"> <%= order.book.title %> </h5>
             <hr>
             <p> Renter: <%= order.user.username %></p>
             <p> Message: <%= order.message %></p>
             <p> Date: <%= order.starting_date %> --> <%= order.ending_date %></p>
-            <p id="status">Status: <%= order.status%></p>
-
+            <hr>
+              <% case order.status %>
+              <% when 'pending' %>
+                <% alert_color = 'warning' %>
+              <% when 'accepted' %>
+                <% alert_color = 'success' %>
+              <% when 'refused' %>
+                <% alert_color = 'danger' %>
+              <% end %>
+            <p> <span>Status:</span> <span class="alert-<%=alert_color%>"> <%= order.status%> </span> </p>
+            <br>
+            <p>Modify status:</p>
 
             <% Order::STATUSES.each do |status| %>
               <%= link_to change_status_order_path(order, status: status), method: :patch, class:"btn btn-light", remote: true do %>
@@ -68,10 +78,21 @@
         <div class="col-md-4 card-rental">
           <div class="order-card">
             <h5 class="text-center"> <%= rental.book.title %> </h5>
+            <hr>
             <p> Renter: <%= rental.user.username %></p>
             <p> Message: <%= rental.message %></p>
             <p> Date: <%= rental.starting_date %> --> <%= rental.ending_date %></p>
-            <p>Status: <%= rental.status %></p>
+            <hr>
+              <% case rental.status %>
+              <% when 'pending' %>
+                <% alert_color = 'warning' %>
+              <% when 'accepted' %>
+                <% alert_color = 'success' %>
+              <% when 'refused' %>
+                <% alert_color = 'danger' %>
+              <% end %>
+            <p> <span>Status:</span> <span class="alert-<%=alert_color%>"> <%= rental.status%> </span> </p>
+            <br>
           </div>
         </div>
       <% end %>

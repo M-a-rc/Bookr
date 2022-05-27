@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
     if params[:status].present? && Order::STATUSES.include?(params[:status])
       @order.update(status: params[:status])
     end
-    redirect_to profilepage_path(anchor: 'status'), notice: "Status updated to #{@order.status}"
+    redirect_to profilepage_path(anchor: "order-#{@order.id}"), notice: "Status updated to #{@order.status}"
   end
 
   private
