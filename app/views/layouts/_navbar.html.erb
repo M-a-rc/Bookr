@@ -22,11 +22,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item") : (link_to "Sign in", new_user_session_path, class:"dropdown-item")  %>
-                <%= link_to "My Account", profilepage_path, class:"dropdown-item"  %>
-            </div>
+            <% if !current_user.nil? %>
+              <% if current_user.username == "user1" %>
+                <%= image_tag "Enor.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% elsif current_user.username == "user2" %>
+                <%= image_tag "Marc.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
+                <% else %>
+                  <%= image_tag "account.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <% end %>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item") : (link_to "Sign in", new_user_session_path, class:"dropdown-item")  %>
+              <%= link_to "My Account", profilepage_path, class:"dropdown-item"  %>
+          </div>
           </li>
       </ul>
     </div>
