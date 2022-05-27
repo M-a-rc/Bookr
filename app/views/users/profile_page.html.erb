@@ -1,4 +1,4 @@
-<%= render 'layouts/navbar.html.erb' %>
+<%= render 'layouts/navbar.html.erb', locals: { colorclass: 'navbar-contrast' }%>
 
 <div class="container">
   <h2>Welcome back, <%= current_user.username %></h2>
