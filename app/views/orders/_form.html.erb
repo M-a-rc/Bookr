@@ -1,28 +1,48 @@
-<%= simple_form_for [@book, @order] do |f| %>
-  <%= f.input :starting_date, as: :date, html5: true %>
-  <%= f.input :ending_date, as: :date, html5: true %>
-  <%= f.input :message %>
-  <%= f.submit "Validate Order", class: "btn btn-success", data: { toggle: "modal", target: "myModal" }%>
-<% end %>
+<div data-controller="orders-modal">
+  <div >
+    <!-- [...] -->
+  </div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
+
+  <%= simple_form_for([@book, @order], data: {
+                        orders_modal_target: "form",
+                        action: "submit->orders-modal#send"
+                      }) do |f| %>
+    <%= f.input :starting_date, as: :date, html5: true %>
+    <%= f.input :ending_date, as: :date, html5: true %>
+    <%= f.input :message %>
+    <%= f.submit "Passer commande", class: "btn btn-success"%>
+  <% end %>
+
+  <!-- Modal -->
+<div class="modal fade" id="OrderModal" tabindex="-1" aria-labelledby="OrderModalLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        </div>
+        <div class="modal-body text-center" data-orders-modal-target="items">
+          Vous souhaitez réserver le livre <%= @book.title %>
+        <br>
+          Pour la période du :
+          <div style="display: block ruby;">
+            <div id="valStart"></div>
+            <div id="valEnd"></div>
+          </div>
+          Avec le message suivant :
+          <div id="valMessage">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" id="close" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-success" id="confirm" >Confirmer</button>
+        </div>
       </div>
     </div>
-  </div>
+</div>
+
+
 </div>
 <br>
