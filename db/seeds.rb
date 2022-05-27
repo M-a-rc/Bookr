@@ -13,10 +13,9 @@ User.destroy_all
 
 puts "Creating 5 users..."
 
-
+n = 0
 5.times do
-  n = 1
-  User.create(username: "user#{n}", email: "user#{n}@faker.com", password: "123456")
+  User.create(username: "user#{n += 1}", email: "user#{n += 1}@faker.com", password: "123456")
 end
 
 puts "Creating Books"
