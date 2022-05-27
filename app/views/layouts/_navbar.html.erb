@@ -23,9 +23,9 @@
       <ul class="navbar-nav me-auto">
           <li class="nav-item dropdown">
             <% if !current_user.nil? %>
-              <% if current_user.username == "user1" %>
+              <% if current_user.username == "Enor" %>
                 <%= image_tag "Enor.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <% elsif current_user.username == "user2" %>
+              <% elsif current_user.username == "Marc" %>
                 <%= image_tag "Marc.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% end %>
                 <% else %>

@@ -13,7 +13,10 @@ User.destroy_all
 
 puts "Creating 5 users..."
 
-n = 0
+User.create(username: "Enor", email: "enor@faker.com", password: "123456")
+User.create(username: "Marc", email: "marc@faker.com", password: "123456")
+
+n = 2
 5.times do
   n += 1
   User.create(username: "user#{n}", email: "user#{n}@faker.com", password: "123456")
