@@ -1,5 +1,5 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%=locals[:colorclass]%>">
-  <div class="container-fluid">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%=locals[:colorclass]%> mb-4">
+  <div class="container">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo.png", id:"logo" %>
     <% end %>
@@ -8,7 +8,7 @@
       <%= form_tag books_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-inline",
+          class: "form-inline my-search-bar",
           placeholder: "Find a book"
         %>
         <%= submit_tag "Search", class: "btn btn-primary" %>
