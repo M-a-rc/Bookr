@@ -4,12 +4,14 @@
   box-shadow: 5px 1px 10px lightgray;
   border-radius: 6px;
   height: 350px;
+  width: 250px;
   padding: 6px;
     .my-card-upper-image{
       height: 65%;
     }
     .card-body{
       text-align: center;
+      padding: 2px;
     }
     .price-card{
       position: absolute;
@@ -43,5 +45,10 @@
       background-color: white;
       color: #1aa3c7;
 
+    }
+
+    p{
+      margin-bottom: 0px;
+      font-size: 12px;
     }
 }
