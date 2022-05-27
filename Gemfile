@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
+gem "turbolinks_render"
 gem 'pundit'
 gem 'pg_search', '~> 2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
@@ -36,6 +37,7 @@ gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'devise'
 gem 'faker'
 gem "geocoder"
+gem "bootstrap",  '~> 4.3.1'
 
 group :development, :test do
   gem 'pry-byebug'
