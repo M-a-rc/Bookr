@@ -13,7 +13,7 @@
             class: "form-inline",
             placeholder: "Find a book"
           %>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
+          <%= submit_tag "Search", class: "btn btn btn-outline-primary btn-booker" %>
         <% end %>
       </div>
 
@@ -52,12 +52,12 @@
             <p class="price-value"><%= @book.price%>€</p>
             <p class="price-txt">/day</p>
           </div>
-          <%= @book.user == current_user ? ("This is your book") : (link_to "Get this book!", new_book_order_path(@book), class:"btn btn-primary") %>
+          <%= @book.user == current_user ? ("This is your book") : (link_to "Get this book!", new_book_order_path(@book), class:"btn btn-outline-primary btn-booker") %>
         </div>
       </div>
     </div>
 
 
 
-  <%= link_to "Back", books_path,class: "btn btn-primary mb-3" %>
+  <%= link_to "Back", books_path,class: "btn btn-outline-primary btn-booker mb-3" %>
 </div>
