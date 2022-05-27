@@ -1,11 +1,10 @@
 .my-card{
   position: relative;
   background-color: white;
-  border: solid;
-  border-color: grey;
-  border-radius: 8px;
+  box-shadow: 5px 1px 10px grey;
+  border-radius: 6px;
   height: 450px;
-  padding: 5px;
+  padding: 6px;
     .my-card-upper-image{
       height: 70%;
     }
@@ -34,5 +33,15 @@
     .price-card > .price-txt{
       padding: 0px;
       margin: 0px;
+    }
+    i{
+      position: absolute;
+      right: -12px;
+      top: -10px;
+      font-size: 35px;
+      border-radius: 50%;
+      background-color: white;
+      color: #1aa3c7;
+
     }
 }

@@ -52,7 +52,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to books_path
+    redirect_to profile_page_path
   end
 
   private
