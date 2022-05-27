@@ -3,6 +3,7 @@
 <div class="container">
   <h2>Welcome back, <%= current_user.username %></h2>
 
+
   <div class="container">
 
     <div class="row">
@@ -11,6 +12,10 @@
         <div class="col-md-3">
           <%= link_to book_path(book) do %>
             <div class="my-card mb-3">
+            <%= link_to book_path(book), data: {:confirm => 'Are you sure?'}, method: :delete do %>
+              <i class="fa-solid fa-circle-xmark"></i>
+              <% end %>
+
               <div class ="my-card-upper-image" style="background-image: url(<%= image_path book.image_url %>); background-size: contain; background-position: center; background-repeat: no-repeat">
               </div>
               <hr>
@@ -46,6 +51,27 @@
                 <%= status %>
               <% end %>
             <% end %>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div class="row">
+      <h3>Books you orders</h3>
+      <% @rentals.each do |rental| %>
+        <div class="col-md-4 card-rental">
+          <div class="card-rental-infos">
+            <h2> Title: <%= rental.book.title %> </h2>
+            <p> Renter: <%= rental.user.username %></p>
+            <p> Message: <%= rental.message %></p>
+            <p> Date: <%= rental.starting_date %> --> <%= rental.ending_date %></p>
+            <p>Status: <%= rental.status %></p>
+
 
           </div>
         </div>
