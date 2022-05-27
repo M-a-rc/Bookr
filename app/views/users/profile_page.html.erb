@@ -38,8 +38,9 @@
       <h3>Your orders</h3>
       <% @orders.each do |order| %>
         <div class="col-md-4 card-order">
-          <div class="card-order-infos">
-            <h2> Title: <%= order.book.title %> </h2>
+          <div class="order-card">
+            <h5 class="text-center"> <%= order.book.title %> </h5>
+            <hr>
             <p> Renter: <%= order.user.username %></p>
             <p> Message: <%= order.message %></p>
             <p> Date: <%= order.starting_date %> --> <%= order.ending_date %></p>
@@ -65,14 +66,12 @@
       <h3>Books you orders</h3>
       <% @rentals.each do |rental| %>
         <div class="col-md-4 card-rental">
-          <div class="card-rental-infos">
-            <h2> Title: <%= rental.book.title %> </h2>
+          <div class="order-card">
+            <h5 class="text-center"> <%= rental.book.title %> </h5>
             <p> Renter: <%= rental.user.username %></p>
             <p> Message: <%= rental.message %></p>
             <p> Date: <%= rental.starting_date %> --> <%= rental.ending_date %></p>
             <p>Status: <%= rental.status %></p>
-
-
           </div>
         </div>
       <% end %>
