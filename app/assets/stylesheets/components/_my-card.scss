@@ -3,36 +3,41 @@
   background-color: white;
   box-shadow: 5px 1px 10px lightgray;
   border-radius: 6px;
-  height: 450px;
+  height: 350px;
+  width: 250px;
   padding: 6px;
+  margin-top: 20px;
     .my-card-upper-image{
-      height: 70%;
+      height: 65%;
     }
     .card-body{
       text-align: center;
+      padding: 2px;
     }
-    .price-card{
+    .price-card {
       position: absolute;
-      top: 240px;
-      right: 8px;
-      width: 80px;
-      height: 80px;
+      top: -6%;
+      right: -20px;
+      width: 55px;
+      height: 55px;
       border-radius: 40px;
-      background-color: gold;
+      background-color: $logo-color;
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
+  }
     .price-card > .price-value{
-      font-size: 24px;
+      font-size: 15px;
       padding: 0px;
       margin: 0px;
+      color: white;
     }
     .price-card > .price-txt{
       padding: 0px;
       margin: 0px;
+      color: white;
     }
     i{
       position: absolute;
@@ -43,5 +48,10 @@
       background-color: white;
       color: #1aa3c7;
 
+    }
+
+    p{
+      margin-bottom: 0px;
+      font-size: 12px;
     }
 }
