@@ -77,10 +77,11 @@
             <p> Renter: <%= order.user.username %></p>
             <p> Message: <%= order.message %></p>
             <p> Date: <%= order.starting_date %> --> <%= order.ending_date %></p>
-            <p>Status: <%= order.status %></p>
+            <p id="status">Status: <%= order.status%></p>
+
 
             <% Order::STATUSES.each do |status| %>
-              <%= link_to change_status_order_path(order, status: status), method: :patch do %>
+              <%= link_to change_status_order_path(order, status: status), method: :patch, remote: true do %>
                 <%= status %>
               <% end %>
             <% end %>
