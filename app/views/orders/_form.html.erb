@@ -1,6 +1,6 @@
 <%= simple_form_for [@book, @order] do |f| %>
-  <%= f.input :starting_date %>
-  <%= f.input :ending_date %>
+  <%= f.input :starting_date, as: :date, html5: true %>
+  <%= f.input :ending_date, as: :date, html5: true %>
   <%= f.input :message %>
   <%= f.submit "Validate Order", class: "btn btn-success", data: { toggle: "modal", target: "myModal" }%>
 <% end %>

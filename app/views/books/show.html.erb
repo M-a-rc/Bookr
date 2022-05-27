@@ -1,32 +1,63 @@
+<%# navbar %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container-fluid">
+
+      <%= link_to root_path do  %>
+        <img src="<%= asset_path('logo.png') %>" alt="logo" id="logo">
+      <% end %>
+
+      <div>
+        <%= form_tag books_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-inline",
+            placeholder: "Find a book"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item dropdown">
+              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= asset_path('account.png') %>" />
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= user_signed_in? ? (link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item") : (link_to "Sign in", new_user_session_path, class:"dropdown-item")  %>
+                <%= link_to "My Account", profilepage_path, class:"dropdown-item"  %>
+              </div>
+            </li>
+            <!--li class="nav-item"-->
+            <!--/li-->
+        </ul>
+      </div>
+    </div>
+  </div>
+<%# fin-navbar %>
+
 <div class="container">
 
-  <div class="py-5">
-    <div class="row">
-      <div class="card col-md-12 text-center mb-3 p-3">
-        <h2><%= @book.title %> - <%= @book.author %></h2>
-        <em>&nbsp;<%= @book.publishing_date %>&nbsp;category: <%= @book.category %>&nbsp;</em>
-        <p><%= @book.address %> <%= @book.price %>€/day</p>
-        <p> Propriétaire : <%= @book.user.username%></p>
-        <div class="card ">
-          <div class="book-img d-flex">
-            <%= image_tag @book.image_url, :class => "img-thumbnail"  %>
-            <div class="card-content">
-              <div class="book-overview">
-                <p><%= @book.overview %></p>
-              </div>
-              <div class="orders">
-                <% if @book.user != current_user %>
-                  <%= link_to "Reserver", new_book_order_path(@book) %>
-                <% end %>
-              </div>
-            </div>
+    <div class="show-card mb-3">
+      <%= image_tag @book.image_url %>
+      <div class="show-content">
+        <h2> <%= @book.title %> </h2>
+        <h5> <%= @book.author %>, <%= @book.publishing_date %> </h5>
+        <hr>
+        <p> <%= @book.overview %> </p>
+        <div class="show-card-btm-buttons">
+          <div class="price-card mb-3">
+            <p class="price-value"><%= @book.price%>€</p>
+            <p class="price-txt">/day</p>
           </div>
+          <%= link_to "Get this book!", new_book_order_path(@book), class:"btn btn-primary" %>
         </div>
       </div>
-  </div>
-
-  <%= link_to "Back", books_path,class: "btn" %>
+    </div>
 
 
-  </div>
+
+  <%= link_to "Back", books_path,class: "btn btn-primary mb-3" %>
 </div>
