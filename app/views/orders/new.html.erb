@@ -1,8 +1,8 @@
 <div class="container">
-  <h2 class="pt-4"> Place a new Order</h2>
-    <div class="py-5">
-      <%= render "form", order: @order %>
+  <div class="form-div">
+    <h2 class="pt-4"> Place a new Order</h2>
+    <%= render "form", order: @order %>
 
-      <%= link_to "Back", book_path(@book), class:"btn btn-primary" %>
+    <%= link_to "Back", book_path(@book), class:"btn btn-primary" %>
   </div>
 </div>
